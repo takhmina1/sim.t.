@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Оформление заказа</title>
+</head>
+<body>
+    <h1>Оформить заказ на робота</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Оформить заказ</button>
+
+
+    </form>
+    {% extends 'base_generic.html' %}
+
+    {% block content %}
+      <h2>Order Robot</h2>
+    
+      <form method="post" action="{% url 'order_robot' model=model version=version %}">
+        {% csrf_token %}
+        <label for="email">Your Email:</label>
+        <input type="email" name="email" id="email" required>
+        
+        <button type="submit">Order</button>
+      </form>
+    {% endblock %}
+    
+
+
+
+
+</body>
+</html>
+
+
